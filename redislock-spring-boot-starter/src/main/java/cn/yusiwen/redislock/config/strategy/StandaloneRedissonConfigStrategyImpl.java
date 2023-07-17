@@ -33,10 +33,9 @@ public class StandaloneRedissonConfigStrategyImpl implements RedissonConfigStrat
             if (StringUtils.isNotBlank(password)) {
                 config.useSingleServer().setPassword(password);
             }
-            LOGGER.info("初始化[standalone]方式Config,redisAddress:" + address);
+            LOGGER.info("初始化[standalone]方式Config, redisAddress: {}", address);
         } catch (Exception e) {
             LOGGER.error("standalone Redisson init error", e);
-            e.printStackTrace();
         }
         return config;
     }

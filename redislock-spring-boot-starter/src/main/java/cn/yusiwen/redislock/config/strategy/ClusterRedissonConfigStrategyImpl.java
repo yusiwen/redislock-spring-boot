@@ -38,10 +38,9 @@ public class ClusterRedissonConfigStrategyImpl implements RedissonConfigStrategy
                     config.useClusterServers().setPassword(password);
                 }
             }
-            LOGGER.info("初始化[cluster]方式Config,redisAddress:" + address);
+            LOGGER.info("初始化[cluster]方式Config, redisAddress: {}", address);
         } catch (Exception e) {
             LOGGER.error("cluster Redisson init error", e);
-            e.printStackTrace();
         }
         return config;
     }

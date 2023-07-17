@@ -14,6 +14,7 @@ import cn.yusiwen.redislock.config.strategy.RedissonConfigContext;
 import cn.yusiwen.redislock.config.strategy.SentinelRedissonConfigStrategyImpl;
 import cn.yusiwen.redislock.config.strategy.StandaloneRedissonConfigStrategyImpl;
 import cn.yusiwen.redislock.constant.RedisConnectionType;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
  * Redisson核心配置，用于提供初始化的redisson实例
@@ -32,6 +33,7 @@ public class RedissonManager {
      */
     private final Redisson redisson;
 
+    @SuppressFBWarnings({"EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS", "LEST_LOST_EXCEPTION_STACK_TRACE"})
     public RedissonManager(RedissonProperties redissonProperties) {
         try {
             Config config = RedissonConfigFactory.getInstance().createConfig(redissonProperties);

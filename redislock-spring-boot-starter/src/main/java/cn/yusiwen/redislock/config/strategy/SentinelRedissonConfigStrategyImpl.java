@@ -40,10 +40,9 @@ public class SentinelRedissonConfigStrategyImpl implements RedissonConfigStrateg
                 config.useSentinelServers()
                     .addSentinelAddress(GlobalConstant.REDIS_CONNECTION_PREFIX.getValue() + addrTokens[i]);
             }
-            LOGGER.info("初始化[sentinel]方式Config,redisAddress:" + address);
+            LOGGER.info("初始化[sentinel]方式Config, redisAddress: {}", address);
         } catch (Exception e) {
             LOGGER.error("sentinel Redisson init error", e);
-            e.printStackTrace();
         }
         return config;
     }

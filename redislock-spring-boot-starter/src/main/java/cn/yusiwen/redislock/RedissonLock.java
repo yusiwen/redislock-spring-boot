@@ -47,8 +47,7 @@ public class RedissonLock {
                 LOGGER.info("获取Redisson分布式锁[失败],lockName={}", lockName);
             }
         } catch (InterruptedException e) {
-            LOGGER.error("获取Redisson分布式锁[异常]，lockName=" + lockName, e);
-            e.printStackTrace();
+            LOGGER.error("获取Redisson分布式锁[异常]，lockName=%{}", lockName, e);
             Thread.currentThread().interrupt();
             return false;
         }

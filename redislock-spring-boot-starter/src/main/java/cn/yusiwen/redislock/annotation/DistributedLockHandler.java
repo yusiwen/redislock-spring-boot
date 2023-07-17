@@ -49,7 +49,6 @@ public class DistributedLockHandler {
                 joinPoint.proceed();
             } catch (Throwable throwable) {
                 LOGGER.error("获取Redis分布式锁[异常]，加锁失败", throwable);
-                throwable.printStackTrace();
             } finally {
                 redissonLock.release(lockName);
             }

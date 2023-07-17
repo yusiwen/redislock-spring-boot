@@ -41,17 +41,16 @@ public class MasterSlaveRedissonConfigStrategyImpl implements RedissonConfigStra
             }
             config.useMasterSlaveServers().setDatabase(database);
             /* 设置从节点，移除第一个节点，默认第一个为主节点 */
-            List<String> slaveList = new ArrayList<>();
+            List<String> slaveList = new ArrayList<>(addrTokens.length);
             for (String addrToken : addrTokens) {
                 slaveList.add(GlobalConstant.REDIS_CONNECTION_PREFIX.getValue() + addrToken);
             }
             slaveList.remove(0);
 
             config.useMasterSlaveServers().addSlaveAddress(slaveList.toArray(new String[0]));
-            LOGGER.info("初始化[MASTERSLAVE]方式Config,redisAddress:" + address);
+            LOGGER.info("初始化[MASTERSLAVE]方式Config, redisAddress: {}", address);
         } catch (Exception e) {
             LOGGER.error("MASTERSLAVE Redisson init error", e);
-            e.printStackTrace();
         }
         return config;
     }
